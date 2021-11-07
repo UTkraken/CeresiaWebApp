@@ -5,6 +5,9 @@ from django_bleach.models import BleachField
 class SerialNumber(models.Model):
     serial_number = BleachField(null=False)
 
+    def __str__(self):
+        return ''.join(self.serial_number)
+
 
 class User(models.Model):
     lastname = BleachField(max_length=50, null=False)
@@ -13,21 +16,30 @@ class User(models.Model):
     password = BleachField(max_length=50, null=False)
     serial_number = models.ForeignKey(SerialNumber, null=False, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return ''.join(self.lastname, self.firstname, self.email, self.password, self.serial_number)
+
 
 class Species(models.Model):
-    name = BleachField(max_length=150, null=False)
     family = BleachField(max_length=150, null=False)
     scientific_name = BleachField(max_length=150, null=False)
     weight = BleachField(max_length=150, null=False)
     height = BleachField(max_length=150, null=False)
+
+    def __str__(self):
+        return ''.join(self.family, self.scientific_name, self.weight, self.height)
 
 
 class Hike(models.Model):
     num = models.AutoField
     name = BleachField(max_length=150, null=False)
     location = BleachField(max_length=150, null=False)
-    rating = BleachField(max_length=150, null=False)
+    rating = BleachField(max_length=150, null=True)
     county = BleachField(max_length=150, null=False)
+    duration = BleachField(max_length=150, null=True)
+
+    def __str__(self):
+        return ''.join(self.name, self.location, self.rating, self.county, self.duration)
 
 
 class Encounter(models.Model):
