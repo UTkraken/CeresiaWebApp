@@ -31,6 +31,9 @@
 #nav {
 	color: white;
 }
+#nav a{
+	text-decoration: none;
+}
 .nav_button {
 	font-family: Oxygen;
 	color: white;
@@ -124,7 +127,25 @@
 	margin-right: 3px;
 }
 
-
+/* History */
+#history_container hr {
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 50%;
+}
+.history_block {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	/*border-top: solid 1px black;*/
+	/*border-bottom: solid 1px rgba(255,255,255,0.5);*/
+	height: 20px;
+	padding: 20px 0;
+}
+.hike_name {
+	padding-right: 25px;
+}
 
 
 
