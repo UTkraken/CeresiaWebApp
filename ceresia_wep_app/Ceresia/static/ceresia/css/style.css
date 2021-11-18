@@ -1,0 +1,179 @@
+#container_body {
+	display: flex;
+	height: 100%;
+		font-family: Oxygen;
+
+}
+#body_wrap {
+	width: 100%;
+	margin: 5% 3%;
+}
+
+/*Side Menu*/
+#sidebar {
+    width: 220px;
+    height: 100%;
+    background-color: #EC4258;
+    border-radius: 0 25px 25px 0;
+	position: relative;
+}
+
+#poulpy {
+	display: block;
+	left: 0;
+	right: 0;
+	margin: auto;
+	padding-top: 25px;
+	padding-bottom: 215px;
+	width: 90px;
+	height: auto;
+}
+#nav {
+	color: white;
+}
+.nav_button {
+	font-family: Oxygen;
+	color: white;
+	height: 20px;
+	font-size: 20px;
+	text-align: center;
+	transition: all 0.2s ease-out;
+	padding: 15px 0;
+	cursor: pointer;
+}
+
+.nav_button:hover {
+	background: rgb(255,255,255);
+	background: -moz-linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7206232834930848) 77%);
+	background: -webkit-linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7206232834930848) 77%);
+	background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7206232834930848) 77%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
+	color: #EC4258;
+	transition: all 0.2s ease-out;
+
+}
+
+/* HEADER */
+.header_container {
+	display: flex;
+	justify-content: space-between;
+}
+#header {
+	margin-bottom: 30px;
+}
+#search_bar {
+	position: relative;
+	width: 170px;
+	height: 30px;
+	color: #D2D2D2;
+	border-bottom: solid 1px #D2D2D2;
+}
+#search_bar input {
+	border: none;
+	height: 30px;
+}
+#search_bar svg {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	right: 5px;
+	height: 15px;
+	width: 15px;
+	fill: #D2D2D2;
+}
+#profile {
+	color: #EC4258;
+	font-weight: bold;
+	font-size: 15px;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: space-around;
+	width: 15%;
+}
+
+
+/*Hike Card */
+.hike {
+	width: 220px;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: rgba(236, 66, 88, 0.21);
+	padding: 10px 5px;
+	border-radius: 10px;
+}
+
+.hike div {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding-bottom: 15px;
+
+}
+.hike_title svg{
+	margin-right: 10px;
+}
+.hike_duration svg{
+	margin-right: 10px;
+}
+.hike_rating {
+	justify-content: center !important;
+}
+.hike_rating svg{
+	margin-right: 3px;
+}
+
+
+
+
+
+/* Reset CSS */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
