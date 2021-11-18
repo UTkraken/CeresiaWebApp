@@ -147,6 +147,23 @@
 	padding-right: 25px;
 }
 
+/* Cerescope */
+.cerescope_block {
+	width: 150px;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: rgba(236, 66, 88, 0.21);
+	padding: 10px 10px;
+	border-radius: 10px;
+}
+.cerescope_block div {
+	padding-bottom: 5px;
+	display: flex;
+	align-items: center;
+}
+.cerescope_block div svg{
+	padding-right: 10px;
+}
 
 
 /* Reset CSS */
