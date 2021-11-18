@@ -1,0 +1,20 @@
+{% extends "ceresia/base.html" %}
+
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+         <title>Cerescope</title>
+    {% endblock %}
+</head>
+{% block content %}
+
+{%include "ceresia/components/header.html" %}
+
+<div id="cerescope_container">
+
+    {% include "ceresia/components/animal_card.html" %}
+
+</div>
+
+{% endblock %}

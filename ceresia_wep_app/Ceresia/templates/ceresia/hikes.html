@@ -1,0 +1,20 @@
+{% extends "ceresia/base.html" %}
+
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+         <title>Index</title>
+    {% endblock %}
+</head>
+{% block content %}
+
+{%include "ceresia/components/header.html" %}
+
+<div id="hike_container">
+
+    {%include "ceresia/components/hike_card.html" %}
+
+</div>
+
+{% endblock %}
