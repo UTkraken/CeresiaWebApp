@@ -19,7 +19,8 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', django_bleach.models.BleachField(max_length=150)),
                 ('location', django_bleach.models.BleachField(max_length=150)),
-                ('rating', django_bleach.models.BleachField(max_length=150)),
+                ('duration', django_bleach.models.BleachField(max_length=150, null=True)),
+                ('rating', django_bleach.models.BleachField(max_length=150, null=True)),
                 ('county', django_bleach.models.BleachField(max_length=150)),
             ],
         ),
@@ -34,7 +35,6 @@ class Migration(migrations.Migration):
             name='Species',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', django_bleach.models.BleachField(max_length=150)),
                 ('family', django_bleach.models.BleachField(max_length=150)),
                 ('scientific_name', django_bleach.models.BleachField(max_length=150)),
                 ('weight', django_bleach.models.BleachField(max_length=150)),
