@@ -12,10 +12,12 @@
 {%include "ceresia/components/header.html" %}
 
 <div id="hike_container">
+
     {% for h in hikes %}
-    {{ h.name }}
+      {%include "ceresia/components/hike_card.html" with hike=h %}
+    {% empty %}
+        <p>Sorry, no hikes to show.</p>
     {% endfor %}
-    {%include "ceresia/components/hike_card.html" with hike=hikes %}
 
 </div>
 

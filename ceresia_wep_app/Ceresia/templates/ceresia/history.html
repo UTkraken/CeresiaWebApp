@@ -12,8 +12,13 @@
 {%include "ceresia/components/header.html" %}
 
 <div id="history_container">
+    {% for h in history %}
+          {%include "ceresia/components/history_card.html" with history=h %}
+    {% empty %}
+        <p>Sorry, no history to show.</p>
+    {% endfor %}
 
-    {%include "ceresia/components/history_card.html" %}
+<!--    {%include "ceresia/components/history_card.html" %}-->
 
 </div>
 
