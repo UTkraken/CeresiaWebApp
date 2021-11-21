@@ -12,8 +12,10 @@
 {%include "ceresia/components/header.html" %}
 
 <div id="hike_container">
-
-    {%include "ceresia/components/hike_card.html" %}
+    {% for h in hikes %}
+    {{ h.name }}
+    {% endfor %}
+    {%include "ceresia/components/hike_card.html" with hike=hikes %}
 
 </div>
 
