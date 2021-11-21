@@ -12,3 +12,11 @@ def history(request):
 
 def cerescope(request):
     return render(request, 'ceresia/cerescope.html')
+
+
+def achievements(request):
+    return render(request, 'ceresia/achievements.html')
+
+
+def login(request):
+    return render(request, 'ceresia/login.html')
