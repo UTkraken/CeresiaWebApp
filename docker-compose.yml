@@ -1,6 +1,15 @@
 version: '3'
 
 services:
+  db:
+    image: postgres
+    ports:
+      - "5435:5432"
+    environment:
+      - POSTGRES_DB=CeresiaApp
+      - POSTGRES_PASSWORD=0150
+      - POSTGRES_USER=postgres
+      - PGDATA=/var/lib/postgresql/data
   web:
     build: ./Docker/
     command: bash -c "pip install -r requirements.txt && cd ceresia_web_app && python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
