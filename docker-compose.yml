@@ -1,31 +1,11 @@
-version: "3.9"
+version: '3'
 
 services:
-  app:
-    build: ./Docker
-    ports:
-      - 8080:80
-    volumes:
-      - ./site:/var/www/html
-    links:
-      - db:postgres
-
-  db:
-    image: postgres
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_DB=ceresia
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
   web:
-    build: ceresia_web_app
-    command: python manage.py runserver 0.0.0.0:8000
+    build: ./Docker/
+    command: bash -c "pip install -r requirements.txt && cd ceresia_web_app && python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    container_name: ceresia_app
     volumes:
-      - .:/ceresia_web_app
+      - .:/ceresia_app
     ports:
       - "8000:8000"
-    depends_on:
-      - db:postgres
