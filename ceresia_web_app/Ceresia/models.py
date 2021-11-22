@@ -45,11 +45,11 @@ class Hike(models.Model):
 class Encounter(models.Model):
     serial_number = models.ForeignKey(SerialNumber, null=False, on_delete=models.CASCADE)
     scientific_name = models.ForeignKey(Species, null=False, on_delete=models.CASCADE)
-    date = models.DateField
+    date = models.DateField()
     path = BleachField(null=False)
 
 
 class History(models.Model):
     email = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
     num_hike = models.ForeignKey(Hike, null=False, on_delete=models.CASCADE)
-    date = models.DateField
+    date = models.DateField()
