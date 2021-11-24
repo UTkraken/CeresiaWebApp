@@ -12,9 +12,11 @@
 {%include "ceresia/components/header.html" %}
 
 <div id="cerescope_container">
-
-    {% include "ceresia/components/animal_card.html" %}
-
+    {% for animal in species %}
+      {%include "ceresia/components/animal_card.html" with animal=animal %}
+    {% empty %}
+        <p>Sorry, no species to show.</p>
+    {% endfor %}
 </div>
 
 {% endblock %}

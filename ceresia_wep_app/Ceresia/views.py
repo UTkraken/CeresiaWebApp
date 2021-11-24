@@ -5,26 +5,26 @@ from Ceresia.models import Hike, History, Species
 
 def hikes(request):
     hikes = Hike.objects.all()
-    contexte = {
+    context = {
         'hikes': hikes
     }
-    return render(request, 'ceresia/hikes.html', contexte)
+    return render(request, 'ceresia/hikes.html', context)
 
 
 def history(request):
     history = History.objects.all()
-    contexte = {
+    context = {
         'history': history
     }
-    return render(request, 'ceresia/history.html')
+    return render(request, 'ceresia/history.html', context)
 
 
 def cerescope(request):
     species = Species.objects.all()
-    contexte = {
+    context = {
         'species': species
     }
-    return render(request, 'ceresia/cerescope.html')
+    return render(request, 'ceresia/cerescope.html', context)
 
 
 def achievements(request):
