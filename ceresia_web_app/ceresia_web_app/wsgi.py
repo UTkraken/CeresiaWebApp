@@ -1,5 +1,5 @@
 """
-WSGI config for ceresia_wep_app project.
+WSGI config for ceresia_web_app project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ceresia_wep_app.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ceresia_web_app.settings')
 
 application = get_wsgi_application()
