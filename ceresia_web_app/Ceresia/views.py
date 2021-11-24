@@ -2,8 +2,16 @@ from django.shortcuts import render
 
 from Ceresia.models import Hike, History, Species
 
+from Ceresia import fill_database
+
+run_once = 0
+
 
 def hikes(request):
+    global run_once
+    if run_once == 0:
+        fill_database.generate_data_docker()
+        run_once = 1
     hikes = Hike.objects.all()
     context = {
         'hikes': hikes
