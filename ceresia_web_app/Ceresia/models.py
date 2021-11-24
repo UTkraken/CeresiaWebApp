@@ -5,6 +5,9 @@ from django_bleach.models import BleachField
 class SerialNumber(models.Model):
     serial_number = BleachField(null=False)
 
+    def str(self):
+        return ''.join(self.serial_number)
+
 
 class User(models.Model):
     lastname = BleachField(max_length=50, null=False)
@@ -13,12 +16,18 @@ class User(models.Model):
     password = BleachField(max_length=50, null=False)
     serial_number = models.ForeignKey(SerialNumber, null=False, on_delete=models.CASCADE)
 
+    def str(self):
+        return ''.join(self.lastname, self.firstname, self.email, self.password, self.serial_number)
+
 
 class Species(models.Model):
     family = BleachField(max_length=150, null=False)
     scientific_name = BleachField(max_length=150, null=False)
     weight = BleachField(max_length=150, null=False)
     height = BleachField(max_length=150, null=False)
+
+    def str(self):
+        return ''.join(self.family, self.scientific_name, self.weight, self.height)
 
 
 class Hike(models.Model):
@@ -27,6 +36,10 @@ class Hike(models.Model):
     location = BleachField(max_length=150, null=False)
     rating = BleachField(max_length=150, null=True)
     county = BleachField(max_length=150, null=False)
+    duration = BleachField(max_length=150, null=True)
+
+    def str(self):
+        return ''.join(self.name, self.location, self.rating, self.county, self.duration)
 
 
 class Encounter(models.Model):

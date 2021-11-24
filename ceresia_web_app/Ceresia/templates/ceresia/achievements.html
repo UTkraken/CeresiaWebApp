@@ -4,20 +4,16 @@
 <head>
     <meta charset="UTF-8">
     {% block title %}
-         <title>Index</title>
+         <title>Succès</title>
     {% endblock %}
 </head>
 {% block content %}
 
 {%include "ceresia/components/header.html" %}
 
-<div id="hike_container">
+<div id="achievement_container">
 
-    {% for h in hikes %}
-      {%include "ceresia/components/hike_card.html" with hike=h %}
-    {% empty %}
-        <p>Sorry, no hikes to show.</p>
-    {% endfor %}
+    {% include "ceresia/components/achievement_card.html" %}
 
 </div>
 
