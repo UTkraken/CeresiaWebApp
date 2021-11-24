@@ -36,6 +36,7 @@ def import_test_user():
     u.serial_number = SerialNumber.objects.get(pk=73)
     u.save()
 
+    u = User()
     u.lastname = 'Burgard'
     u.firstname = 'Thomas'
     u.email = 'thomas.burgard@ceresia.com'
@@ -53,3 +54,11 @@ def import_some_species():
         s.weight = str(randint(3, 250))
         s.height = str(randint(3, 200))
         s.save()
+
+
+def generate_data_docker():
+    generate_serial_number()
+    clean_and_add_hikes_data()
+    import_some_species()
+    import_test_user()
+    print("All data is addeed !")

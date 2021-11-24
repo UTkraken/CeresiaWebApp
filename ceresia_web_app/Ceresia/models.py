@@ -15,7 +15,6 @@ class User(models.Model):
 
 
 class Species(models.Model):
-    name = BleachField(max_length=150, null=False)
     family = BleachField(max_length=150, null=False)
     scientific_name = BleachField(max_length=150, null=False)
     weight = BleachField(max_length=150, null=False)
@@ -26,7 +25,7 @@ class Hike(models.Model):
     num = models.AutoField
     name = BleachField(max_length=150, null=False)
     location = BleachField(max_length=150, null=False)
-    rating = BleachField(max_length=150, null=False)
+    rating = BleachField(max_length=150, null=True)
     county = BleachField(max_length=150, null=False)
 
 
