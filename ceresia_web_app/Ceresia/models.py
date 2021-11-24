@@ -48,8 +48,14 @@ class Encounter(models.Model):
     date = models.DateField()
     path = BleachField(null=False)
 
+    def str(self):
+        return ''.join(self.serial_number, self.scientific_name, self.date, self.path)
+
 
 class History(models.Model):
     email = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
     num_hike = models.ForeignKey(Hike, null=False, on_delete=models.CASCADE)
     date = models.DateField()
+
+    def str(self):
+        return ''.join(self.email, self.num_hike, self.date)

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from Ceresia.models import Hike, History, Species
+from .filters import HikeFilter, CerescopeFilter
 
 from Ceresia import fill_database
 
@@ -13,9 +14,16 @@ def hikes(request):
         fill_database.generate_data_docker()
         run_once = 1
     hikes = Hike.objects.all()
+    hike_filter = HikeFilter(request.GET, queryset=hikes)
+    hikes = hike_filter.qs
     context = {
-        'hikes': hikes
+        'hikes': hikes,
+        'hike_filter': hike_filter
     }
+
+
+
+
     return render(request, 'ceresia/hikes.html', context)
 
 
@@ -29,8 +37,11 @@ def history(request):
 
 def cerescope(request):
     species = Species.objects.all()
+    species_filter = CerescopeFilter(request.GET, queryset=species)
+    species = species_filter.qs
     context = {
-        'species': species
+        'species': species,
+        'species_filter' : species_filter
     }
     return render(request, 'ceresia/cerescope.html', context)
 

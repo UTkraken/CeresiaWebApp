@@ -12,7 +12,9 @@
 {%include "ceresia/components/header.html" %}
 
 <div id="hike_container">
-
+<form method="get" id="hike_search">
+   {{hike_filter.form}}
+</form>
     {% for h in hikes %}
       {%include "ceresia/components/hike_card.html" with hike=h %}
     {% empty %}
