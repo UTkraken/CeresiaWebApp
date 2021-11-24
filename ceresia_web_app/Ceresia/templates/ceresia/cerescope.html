@@ -10,8 +10,11 @@
 {% block content %}
 
 {%include "ceresia/components/header.html" %}
-
+<form method="get" id="hike_search">
+   {{species_filter.form}}
+</form>
 <div id="cerescope_container">
+
     {% for animal in species %}
       {%include "ceresia/components/animal_card.html" with animal=animal %}
     {% empty %}

@@ -65,7 +65,7 @@ background: rgba(255,255,255,0.3);
 /* HEADER */
 .header_container {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 }
 #header {
 	margin-bottom: 30px;
@@ -103,7 +103,7 @@ background: rgba(255,255,255,0.3);
 }
 
 
-/*Hike Card */
+/*Hike */
 .hike {
 	width: 220px;
 	font-size: 12px;
@@ -118,7 +118,9 @@ background: rgba(255,255,255,0.3);
 	justify-content: flex-start;
 	align-items: center;
 	padding-bottom: 15px;
-
+}
+#hike_search {
+	padding-bottom: 25px;
 }
 .hike_title svg{
 	margin-right: 10px;
@@ -138,7 +140,6 @@ background: rgba(255,255,255,0.3);
 	width: 50%;
 }
 .history_block {
-	cursor: pointer;
 	color: white;
 	display: flex;
 	justify-content: flex-start;
