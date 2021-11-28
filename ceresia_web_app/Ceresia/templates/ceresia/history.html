@@ -10,6 +10,25 @@
 {% block content %}
 
 {%include "ceresia/components/header.html" %}
+   <form method="POST" action="delete_all_history" onsubmit="return confirm('Are you sure you want to delete the entire history?');">
+            {% csrf_token %}
+        <input type="submit" value="Delete all">
+    </form>
+<form method="POST" action="create_history" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="name_field">Choose a hike:</label>
+    <select name="name" id="name_field" required>
+        {% for h in hikes %}
+            <option> {{ h.name }}</option>
+        {% endfor %}
+    </select>
+    <label for="start">Hike date :</label>
+
+<input type="date" id="start" name="date"
+       value="2021-10-10"
+       min="2018-00-00">
+     <input type="submit" value="Save" class="btn btn-md btn-secondary">
+</form>
 
 <div id="history_container">
     {% for h in history %}
