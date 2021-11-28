@@ -1,9 +1,9 @@
 from django.forms import modelformset_factory
 from django.shortcuts import render
 
-from Ceresia.models import Hike, History, Species
+from Ceresia.models import Hike, History, Species, User
 from .filters import HikeFilter, CerescopeFilter, CountyFilter
-from .forms import HistoryForm
+from .forms import HistoryForm, HistoryDeleteForm
 
 from Ceresia import fill_database
 
@@ -30,32 +30,82 @@ def hikes(request):
 
 
 def history(request):
-    # HistoryFormSet = modelformset_factory(Hike, fields=('name',))
-    form = HistoryForm(request.POST or None)
-
+    hike = Hike.objects.all()
     history = History.objects.all()
     context = {
         'history': history,
-        'form': form
+        'hikes': hike
     }
 
     return render(request, 'ceresia/history.html', context)
 
 
 def create_history(request):
-    # form to input a new student
-    form = HistoryForm(request.POST or None)
 
+    form = HistoryForm(request.POST or None)
     if form.is_valid():
-        instance = form.save(commit=False)
-        instance.save()
+
+        historyFormName = form.cleaned_data['name']
+        hike = Hike.objects.get(name=historyFormName)
+        user = User.objects.get(email="thomas.burgard@ceresia.com")
+        historyDate = form.cleaned_data['date']
+
+        newHistory = History(num_hike=hike, date=historyDate, email=user)
+        newHistory.save()
+
+        hikeList = Hike.objects.all()
+        historyList = History.objects.all()
+        context = {
+            "form": form,
+            "hikes": hikeList,
+            "history": historyList
+        }
+
+        return render(request, "ceresia/history.html", context)
 
     context = {
-        "form": form
+        "form": form,
     }
 
     return render(request, "ceresia/history.html", context)
 
+
+def delete_history(request):
+    form = HistoryDeleteForm(request.POST or None)
+    if form.is_valid():
+        if request.POST.get('delete') is not None:
+            historyId = request.POST.get('delete')
+            History.objects.filter(pk=historyId).delete()
+        else:
+            context = {
+                "form": form,
+            }
+
+            return render(request, "ceresia/history.html", context)
+    hikeList = Hike.objects.all()
+    historyList = History.objects.all()
+    context = {
+        "form": form,
+        "hikes": hikeList,
+        "history": historyList
+    }
+
+    return render(request, "ceresia/history.html", context)
+
+
+def delete_all_history(request):
+    form = HistoryForm(request.POST or None)
+
+    History.objects.all().delete()
+    hike = Hike.objects.all()
+    history = History.objects.all()
+    context = {
+        'history': history,
+        'hikes': hike,
+        'form': form
+    }
+
+    return render(request, "ceresia/history.html", context)
 
 def cerescope(request):
     species = Species.objects.all().order_by('scientific_name')
