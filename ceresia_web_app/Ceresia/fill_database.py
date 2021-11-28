@@ -1,8 +1,16 @@
 # Import
 import pandas as pd
+import numpy as np
 from numpy.random import randint
 # Model
 from Ceresia.models import Hike, User, SerialNumber, Species
+
+
+def clear_database():
+    Hike.objects.all().delete()
+    User.objects.all().delete()
+    SerialNumber.objects.all().delete()
+    Species.objects.all().delete()
 
 
 def generate_serial_number():
@@ -13,18 +21,15 @@ def generate_serial_number():
 
 
 def clean_and_add_hikes_data():
-    df = pd.read_csv('dataset/france_hiking_foot_routes_line.csv')
-    # Remove all hikes with a empty name
-    df_clean = df.loc[df['name'].notnull()]
-    for i in df_clean.iterrows():
+    df = pd.read_csv('dataset/short_hikes.csv')
+    for i in df.iterrows():
         h = Hike()
         h.name = str(i[1]["name"])
         h.location = str(i[1]["the_geom"])
         h.county = str(randint(1, 95))
         h.duration = str(i[1]["distance"])
         h.save()
-
-    return df_clean.head()
+    return df.head()
 
 
 def import_test_user():
@@ -33,7 +38,7 @@ def import_test_user():
     u.firstname = 'Yvan'
     u.email = 'yvan.gimard@ceresia.com'
     u.password = 'lebddcestgenial73'
-    u.serial_number = SerialNumber.objects.get(pk=73)
+    u.serial_number = SerialNumber.objects.get(serial_number=73)
     u.save()
 
     u = User()
@@ -41,12 +46,12 @@ def import_test_user():
     u.firstname = 'Thomas'
     u.email = 'thomas.burgard@ceresia.com'
     u.password = 'lebddcestgenial74'
-    u.serial_number = SerialNumber.objects.get(pk=74)
+    u.serial_number = SerialNumber.objects.get(serial_number=74)
     u.save()
 
 
 def import_some_species():
-    data = pd.read_csv('dataset/Emerald_2020_SPECIES.csv')
+    data = pd.read_csv('dataset/short_species.csv')
     for i in data.iterrows():
         s = Species()
         s.family = str(i[1]["SPGROUP"])
@@ -57,6 +62,7 @@ def import_some_species():
 
 
 def generate_data_docker():
+    clear_database()
     generate_serial_number()
     clean_and_add_hikes_data()
     import_some_species()
