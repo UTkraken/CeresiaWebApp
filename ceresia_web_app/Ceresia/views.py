@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from Ceresia.models import Hike, History, Species
-from .filters import HikeFilter, CerescopeFilter
+from .filters import HikeFilter, CerescopeFilter, CountyFilter
 
 from Ceresia import fill_database
 
@@ -16,9 +16,12 @@ def hikes(request):
     hikes = Hike.objects.all().order_by('name')
     hike_filter = HikeFilter(request.GET, queryset=hikes)
     hikes = hike_filter.qs
+    county_filter = CountyFilter(request.GET, queryset=hikes)
+    hikes = county_filter.qs
     context = {
         'hikes': hikes,
-        'hike_filter': hike_filter
+        'hike_filter': hike_filter,
+        'county_filter': county_filter
     }
 
     return render(request, 'ceresia/hikes.html', context)
