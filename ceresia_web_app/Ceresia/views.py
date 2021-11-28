@@ -13,16 +13,13 @@ def hikes(request):
     if run_once == 0:
         fill_database.generate_data_docker()
         run_once = 1
-    hikes = Hike.objects.all()
+    hikes = Hike.objects.all().order_by('name')
     hike_filter = HikeFilter(request.GET, queryset=hikes)
     hikes = hike_filter.qs
     context = {
         'hikes': hikes,
         'hike_filter': hike_filter
     }
-
-
-
 
     return render(request, 'ceresia/hikes.html', context)
 
@@ -36,12 +33,12 @@ def history(request):
 
 
 def cerescope(request):
-    species = Species.objects.all()
+    species = Species.objects.all().order_by('scientific_name')
     species_filter = CerescopeFilter(request.GET, queryset=species)
     species = species_filter.qs
     context = {
         'species': species,
-        'species_filter' : species_filter
+        'species_filter': species_filter
     }
     return render(request, 'ceresia/cerescope.html', context)
 

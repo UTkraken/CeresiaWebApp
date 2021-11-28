@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'ceresia_web_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Ceresia',
+        'NAME': 'CeresiaApp',
         'USER': 'postgres',
         'PASSWORD': '0150',
-        'HOST': 'db',
+        'HOST': 'localhost',
         'PORT': '5432'
     }
 }
