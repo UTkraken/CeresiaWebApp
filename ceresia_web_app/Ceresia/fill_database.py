@@ -27,7 +27,8 @@ def clean_and_add_hikes_data():
         h.name = str(i[1]["name"])
         h.location = str(i[1]["the_geom"])
         h.county = str(randint(1, 95))
-        h.duration = str(i[1]["distance"])
+        h.duration = str(i[1]["duration"])
+        h.distance = str(i[1]["distance"])
         h.save()
     return df.head()
 
