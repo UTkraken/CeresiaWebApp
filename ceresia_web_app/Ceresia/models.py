@@ -36,7 +36,8 @@ class Hike(models.Model):
     location = BleachField(max_length=150, null=False)
     rating = BleachField(max_length=150, null=True)
     county = BleachField(max_length=150, null=False)
-    duration = BleachField(max_length=150, null=False, default="Null")
+    duration = BleachField(max_length=150, null=True, default="Null")
+    distance = BleachField(max_length=150, null=True, default="Null")
 
     def str(self):
         return ''.join(self.name, self.location, self.rating, self.county, self.duration)
