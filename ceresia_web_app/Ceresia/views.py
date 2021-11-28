@@ -1,7 +1,9 @@
+from django.forms import modelformset_factory
 from django.shortcuts import render
 
 from Ceresia.models import Hike, History, Species
 from .filters import HikeFilter, CerescopeFilter, CountyFilter
+from .forms import HistoryForm
 
 from Ceresia import fill_database
 
@@ -28,11 +30,31 @@ def hikes(request):
 
 
 def history(request):
+    # HistoryFormSet = modelformset_factory(Hike, fields=('name',))
+    form = HistoryForm(request.POST or None)
+
     history = History.objects.all()
     context = {
-        'history': history
+        'history': history,
+        'form': form
     }
+
     return render(request, 'ceresia/history.html', context)
+
+
+def create_history(request):
+    # form to input a new student
+    form = HistoryForm(request.POST or None)
+
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+
+    context = {
+        "form": form
+    }
+
+    return render(request, "ceresia/history.html", context)
 
 
 def cerescope(request):

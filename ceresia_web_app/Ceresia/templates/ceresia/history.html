@@ -10,7 +10,11 @@
 {% block content %}
 
 {%include "ceresia/components/header.html" %}
-
+<form method="POST" action="create_history" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+     <input type="submit" value="Save" class="btn btn-md btn-secondary">
+</form>
 <div id="history_container">
     {% for h in history %}
           {%include "ceresia/components/history_card.html" with history=h %}
