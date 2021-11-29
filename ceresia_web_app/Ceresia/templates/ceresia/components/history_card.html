@@ -1,3 +1,4 @@
+   {% load static %}
     <div class="history_block">
         <div class="hike_name">
             {{ history.num_hike.name}}
@@ -5,10 +6,10 @@
         <div class="hike_date">
             {{ history.date }}
         </div>
-        <form method="POST" action="delete_history" onsubmit="return confirm('Are you sure you want to delete this hike?');">
+        <form method="POST" action="delete_history" onsubmit="return confirm('Are you sure you want to delete this hike?');" class="history_delete">
                 {% csrf_token %}
             <input type="hidden" name='delete' value={{history.id}}>
-            <input type="submit" value="Supprimer">
+            <input type="image" src="{% static 'ceresia/img/garbage-can.png' %}" alt="submit" value="Supprimer" class="history_delete_button">
         </form>
 
     </div>

@@ -1,12 +1,34 @@
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #EC4258;
+	border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #fa818c;
+}
+
 #container_body {
 	display: flex;
 	height: 100%;
 	font-family: Oxygen;
+	overflow: hidden;
 
 }
 #body_wrap {
 	width: 100%;
-	margin: 5% 3%;
+	margin: 2% 3%;
 }
 
 /*Side Menu*/
@@ -113,8 +135,10 @@ background: rgba(255,255,255,0.3);
 	border-radius: 10px;
 }
 #hike_container {
-	display: flex;
-	flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow: auto;
 }
 .hike {
 	margin: 0 15px 15px 0;
@@ -143,8 +167,51 @@ background: rgba(255,255,255,0.3);
 .hike_rating svg{
 	margin-right: 3px;
 }
+#county_search{
+	margin-left: 20px;
+}
 
 /* History */
+#search_container {
+	display: flex;
+	justify-content: flex-start;
+}
+#create_history_form{
+	margin: 20px 0;
+}
+#create_history_date{
+	margin-left: 10px;
+}
+.option {
+  padding:0 30px 0 10px;
+  min-height:40px;
+  display:flex;
+  align-items:center;
+  background:white;
+  border-top:#EC4258 solid 1px;
+  position:absolute;
+  top:0;
+  width: 100%;
+  pointer-events:none;
+  order:2;
+  z-index:1;
+  transition:background .4s ease-in-out;
+  box-sizing:border-box;
+  overflow:hidden;
+  white-space:nowrap;
+
+}
+.option:hover {
+  background:#EC4258 !important;
+}
+#name_field {
+	padding: 8px 15px;
+}
+.select:focus .option {
+  position:relative;
+  pointer-events:all;
+}
+
 #history_container hr {
 	left: 0;
 	right: 0;
@@ -152,6 +219,7 @@ background: rgba(255,255,255,0.3);
 	width: 50%;
 }
 .history_block {
+	position: relative;
 	color: white;
 	display: flex;
 	justify-content: flex-start;
@@ -164,14 +232,39 @@ background: rgba(255,255,255,0.3);
 	background-size: 150% auto;
 	background-image: linear-gradient(to right, rgba(236,66,88,1) 40%, rgba(255,255,255,0) 78%);
 }
-
+#delete_all_button {
+	cursor: pointer;
+	background-color: #EC4258;
+	border: none;
+	color: white;
+    padding: 8px 16px;
+    border-radius: 7px;
+}
 .history_block:hover {
   background-position: right center; /* change the direction of the change here */
+}
+.history_block:hover .history_delete_button{
+		filter: brightness(0);
+
 }
 .hike_name {
 	padding-right: 25px;
 }
+.history_delete {
+	position: absolute;
+	right: 10%;
+}
+.history_delete_button {
+	height: 24px;
+	width: 24px;
+	transition: all 0.2s ease-out;
+}
 
+.history_delete_button:hover {
+	filter: brightness(1) drop-shadow(1px 2px 7px black) !important;
+	transition: all 0.2s ease-out;
+
+}
 /* Cerescope */
 .cerescope_block {
 	width: 150px;
@@ -195,6 +288,9 @@ background: rgba(255,255,255,0.3);
 #cerescope_container {
 	display: flex;
 	flex-wrap: wrap;
+	height: 100%;
+	overflow: scroll;
+
 }
 
 
