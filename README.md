@@ -34,16 +34,10 @@ It works with a POSTGRESQL database.
 ##### Step 2 :
 - Go to the project root directory 
 
-#### Step 2 bis WARNING :
+#### Step 3 WARNING :
 - You must have a postgresql image in docker to run the project.
   - If you don't, you can find it [here](https://hub.docker.com/_/postgres/).
-
-##### Step 3 :
-- run
-```shell
-  docker compose build
-```
-
+  
 ##### Step 4 :
 - run
 ```shell

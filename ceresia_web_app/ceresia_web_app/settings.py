@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-!o+vw_pm(6h1v6eb)^0x4cz6b^ts7at^^o&=rq%x(u+ud^oty^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'ceresia_web_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'CeresiaApp',
+        'NAME': 'Ceresia',
         'USER': 'postgres',
         'PASSWORD': '0150',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '5432'
     }
 }

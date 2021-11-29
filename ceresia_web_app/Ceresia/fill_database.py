@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from numpy.random import randint
 # Model
-from Ceresia.models import Hike, User, SerialNumber, Species
+from .models import Hike, User, SerialNumber, Species
 
 
 def clear_database():
@@ -30,7 +30,6 @@ def clean_and_add_hikes_data():
         h.duration = str(i[1]["duration"])
         h.distance = str(i[1]["distance"])
         h.save()
-    return df.head()
 
 
 def import_test_user():

@@ -1,20 +1,19 @@
 from django.forms import modelformset_factory
 from django.shortcuts import render
 
-from Ceresia.models import Hike, History, Species, User
+from .models import Hike, History, Species, User
 from .filters import HikeFilter, CerescopeFilter, CountyFilter
 from .forms import HistoryForm, HistoryDeleteForm
 
-from Ceresia import fill_database
+from . import fill_database
 
-run_once = 0
+
+def load(request):
+    fill_database.generate_data_docker()
+    hikes(request)
 
 
 def hikes(request):
-    global run_once
-    if run_once == 0:
-        fill_database.generate_data_docker()
-        run_once = 1
     hikes = Hike.objects.all().order_by('name')
     hike_filter = HikeFilter(request.GET, queryset=hikes)
     hikes = hike_filter.qs
@@ -41,10 +40,8 @@ def history(request):
 
 
 def create_history(request):
-
     form = HistoryForm(request.POST or None)
     if form.is_valid():
-
         historyFormName = form.cleaned_data['name']
         hike = Hike.objects.get(name=historyFormName)
         user = User.objects.get(email="thomas.burgard@ceresia.com")
@@ -106,6 +103,7 @@ def delete_all_history(request):
     }
 
     return render(request, "ceresia/history.html", context)
+
 
 def cerescope(request):
     species = Species.objects.all().order_by('scientific_name')
