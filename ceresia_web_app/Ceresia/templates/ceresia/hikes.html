@@ -11,12 +11,15 @@
 
 {%include "ceresia/components/header.html" %}
 
-<form method="get" id="hike_search">
+<div id="search_container">
+    <form method="get" id="hike_search">
    {{hike_filter.form}}
-</form>
-<form method="get" id="county_search">
-   {{county_filter.form}}
-</form>
+    </form>
+    <form method="get" id="county_search">
+       {{county_filter.form}}
+    </form>
+</div>
+
 <div id="hike_container">
 
     {% for h in hikes %}
