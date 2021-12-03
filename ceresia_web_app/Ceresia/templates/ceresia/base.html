@@ -1,0 +1,17 @@
+{% load static %}
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'ceresia/css/style.css' %}">
+{% endblock header %}
+{% block 'body' %}
+<div id="container_body">
+        {%include "ceresia/components/sidebar.html" %}
+        <div id="body_wrap">
+            {% block content %}
+
+            {%endblock content %}
+        </div>
+</div>
+{% endblock 'body' %}
+
+
+

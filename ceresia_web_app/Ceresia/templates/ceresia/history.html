@@ -1,0 +1,44 @@
+{% extends "ceresia/base.html" %}
+
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+         <title>Historique</title>
+    {% endblock %}
+</head>
+{% block content %}
+
+{%include "ceresia/components/header.html" %}
+   <form method="POST"
+         action="delete_all_history"
+         onsubmit="return confirm('Are you sure you want to delete the entire history?');"
+        >
+        {% csrf_token %}
+        <input type="submit" value="Delete all"  id="delete_all_button">
+    </form>
+<form method="POST" action="create_history" enctype="multipart/form-data" id="create_history_form">
+    {% csrf_token %}
+    <label for="name_field">Choose a hike:</label>
+    <select name="name" id="name_field" class="select" required>
+        {% for h in hikes %}
+            <option class="option"> {{ h.name }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="start" id="create_history_date">Hike date :</label>
+    <input type="date" id="start" name="date"
+       value="2021-10-10"
+       min="2018-00-00">
+     <input type="submit" value="Save" class="btn btn-md btn-secondary">
+</form>
+
+<div id="history_container">
+    {% for h in history %}
+          {%include "ceresia/components/history_card.html" with history=h %}
+    {% empty %}
+        <p>Sorry, no history to show.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

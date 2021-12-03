@@ -1,0 +1,33 @@
+{% extends "ceresia/base.html" %}
+
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+         <title>Index</title>
+    {% endblock %}
+</head>
+{% block content %}
+
+{%include "ceresia/components/header.html" %}
+
+<div id="search_container">
+    <form method="get" id="hike_search">
+   {{hike_filter.form}}
+    </form>
+    <form method="get" id="county_search">
+       {{county_filter.form}}
+    </form>
+</div>
+
+<div id="hike_container">
+
+    {% for h in hikes %}
+      {%include "ceresia/components/hike_card.html" with hike=h %}
+    {% empty %}
+        <p>Sorry, no hikes to show.</p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

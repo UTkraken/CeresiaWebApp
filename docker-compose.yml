@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    ports:
+      - "5450:5432"
+    environment:
+      - POSTGRES_DB=Ceresia
+      - POSTGRES_PASSWORD=0150
+      - POSTGRES_USER=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/dataCeresia
+  web:
+    build:
+      context: .
+    command: /bin/sh -c "./compose.sh"
+    container_name: ceresia_app
+    volumes:
+      - .:/ceresia_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
