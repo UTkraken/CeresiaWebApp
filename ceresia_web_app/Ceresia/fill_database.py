@@ -24,41 +24,52 @@ def clean_and_add_hikes_data():
     df = pd.read_csv('dataset/short_hikes.csv')
     for i in df.iterrows():
         h = Hike()
-        h.name = str(i[1]["name"])
-        h.location = str(i[1]["the_geom"])
-        h.county = str(randint(1, 95))
-        h.duration = str(i[1]["duration"])
-        h.distance = str(i[1]["distance"])
-        h.save()
+        try:
+            h.name = str(i[1]["name"])
+            h.location = str(i[1]["the_geom"])
+            h.county = str(randint(1, 95))
+            h.duration = str(i[1]["duration"])
+            h.distance = str(i[1]["distance"])
+            h.save()
+        except:
+            continue
 
 
 def import_test_user():
-    u = User()
-    u.lastname = 'Gimard'
-    u.firstname = 'Yvan'
-    u.email = 'yvan.gimard@ceresia.com'
-    u.password = 'lebddcestgenial73'
-    u.serial_number = SerialNumber.objects.get(serial_number=73)
-    u.save()
-
-    u = User()
-    u.lastname = 'Burgard'
-    u.firstname = 'Thomas'
-    u.email = 'thomas.burgard@ceresia.com'
-    u.password = 'lebddcestgenial74'
-    u.serial_number = SerialNumber.objects.get(serial_number=74)
-    u.save()
+    try:
+        u = User()
+        u.lastname = 'Gimard'
+        u.firstname = 'Yvan'
+        u.email = 'yvan.gimard@ceresia.com'
+        u.password = 'lebddcestgenial73'
+        u.serial_number = SerialNumber.objects.get(serial_number=73)
+        u.save()
+    except:
+        print('User already present - skipping step')
+    try:
+        u = User()
+        u.lastname = 'Burgard'
+        u.firstname = 'Thomas'
+        u.email = 'thomas.burgard@ceresia.com'
+        u.password = 'lebddcestgenial74'
+        u.serial_number = SerialNumber.objects.get(serial_number=74)
+        u.save()
+    except:
+        print('User already present - skipping step')
 
 
 def import_some_species():
     data = pd.read_csv('dataset/short_species.csv')
     for i in data.iterrows():
-        s = Species()
-        s.family = str(i[1]["SPGROUP"])
-        s.scientific_name = str(i[1]["SPECIESNAME"])
-        s.weight = str(randint(3, 250))
-        s.height = str(randint(3, 200))
-        s.save()
+        try:
+            s = Species()
+            s.family = str(i[1]["SPGROUP"])
+            s.scientific_name = str(i[1]["SPECIESNAME"])
+            s.weight = str(randint(3, 250))
+            s.height = str(randint(3, 200))
+            s.save()
+        except:
+            continue
 
 
 def generate_data_docker():

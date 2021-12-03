@@ -41,11 +41,12 @@ It works with a POSTGRESQL database.
 ```
 
 ##### Step 4 :
-- enter url [localhost](http://127.0.0.1:8000/load-data)
+- enter url [localhost](http://localhost:8000/load-data)
   - If the link does not work, enter directly the url : 
 ```
-    127.0.0.1:8000/load-data
+    localhost:8000/load-data
 ```
+Let the app import the data (**do not refresh while it's loading**). It may take a few seconds and will automatically redirect you
 
 ##### Step 5 :
 - Enjoy the alpha version of Ceresia Web App

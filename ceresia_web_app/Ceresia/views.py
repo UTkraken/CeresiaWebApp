@@ -1,5 +1,4 @@
-from django.forms import modelformset_factory
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Hike, History, Species, User
 from .filters import HikeFilter, CerescopeFilter, CountyFilter
@@ -10,8 +9,8 @@ from . import fill_database
 
 def load(request):
     fill_database.generate_data_docker()
-    hikes(request)
 
+    return redirect('/parcours')
 
 def hikes(request):
     hikes = Hike.objects.all().order_by('name')
@@ -41,29 +40,22 @@ def history(request):
 
 def create_history(request):
     form = HistoryForm(request.POST or None)
-    if form.is_valid():
-        historyFormName = form.cleaned_data['name']
-        hike = Hike.objects.get(name=historyFormName)
-        user = User.objects.get(email="thomas.burgard@ceresia.com")
-        historyDate = form.cleaned_data['date']
 
-        newHistory = History(num_hike=hike, date=historyDate, email=user)
-        newHistory.save()
+    historyFormName = request.POST['name']
+    hike = Hike.objects.get(name=historyFormName)
+    user = User.objects.get(email="thomas.burgard@ceresia.com")
+    historyDate = request.POST['date']
 
-        hikeList = Hike.objects.all()
-        historyList = History.objects.all()
-        context = {
-            "form": form,
-            "hikes": hikeList,
-            "history": historyList
-        }
+    newHistory = History(num_hike=hike, date=historyDate, email=user)
+    newHistory.save()
 
-        return render(request, "ceresia/history.html", context)
-
+    hikeList = Hike.objects.all()
+    historyList = History.objects.all()
     context = {
         "form": form,
+        "hikes": hikeList,
+        "history": historyList
     }
-
     return render(request, "ceresia/history.html", context)
 
 

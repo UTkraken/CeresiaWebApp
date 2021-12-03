@@ -6,7 +6,8 @@ from . import views
 app_name = 'Ceresia'
 
 urlpatterns = [
-    path('', views.load, name="load"),
+    path('load-data', views.load, name="load"),
+    path('', views.hikes, name='hikes'),
     path('parcours', views.hikes, name='hikes'),
     path('historique', views.history, name='history'),
     path('cerescope', views.cerescope, name='cerescope'),
