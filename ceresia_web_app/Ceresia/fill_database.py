@@ -36,21 +36,26 @@ def clean_and_add_hikes_data():
 
 
 def import_test_user():
-    u = User()
-    u.lastname = 'Gimard'
-    u.firstname = 'Yvan'
-    u.email = 'yvan.gimard@ceresia.com'
-    u.password = 'lebddcestgenial73'
-    u.serial_number = SerialNumber.objects.get(serial_number=73)
-    u.save()
-
-    u = User()
-    u.lastname = 'Burgard'
-    u.firstname = 'Thomas'
-    u.email = 'thomas.burgard@ceresia.com'
-    u.password = 'lebddcestgenial74'
-    u.serial_number = SerialNumber.objects.get(serial_number=74)
-    u.save()
+    try:
+        u = User()
+        u.lastname = 'Gimard'
+        u.firstname = 'Yvan'
+        u.email = 'yvan.gimard@ceresia.com'
+        u.password = 'lebddcestgenial73'
+        u.serial_number = SerialNumber.objects.get(serial_number=73)
+        u.save()
+    except:
+        print('User already present - skipping step')
+    try:
+        u = User()
+        u.lastname = 'Burgard'
+        u.firstname = 'Thomas'
+        u.email = 'thomas.burgard@ceresia.com'
+        u.password = 'lebddcestgenial74'
+        u.serial_number = SerialNumber.objects.get(serial_number=74)
+        u.save()
+    except:
+        print('User already present - skipping step')
 
 
 def import_some_species():

@@ -12,7 +12,7 @@ class SerialNumber(models.Model):
 class User(models.Model):
     lastname = BleachField(max_length=50, null=False)
     firstname = BleachField(max_length=50, null=False)
-    email = BleachField(max_length=100, null=False)
+    email = BleachField(max_length=100, null=False, unique=True)
     password = BleachField(max_length=50, null=False)
     serial_number = models.ForeignKey(SerialNumber, null=False, on_delete=models.CASCADE)
 
