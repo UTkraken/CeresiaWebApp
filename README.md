@@ -41,10 +41,10 @@ It works with a POSTGRESQL database.
 ```
 
 ##### Step 4 :
-- enter url [localhost](http://127.0.0.1:8000/)
+- enter url [localhost](http://127.0.0.1:8000/load-data)
   - If the link does not work, enter directly the url : 
 ```
-    127.0.0.1:8000
+    127.0.0.1:8000/load-data
 ```
 
 ##### Step 5 :
